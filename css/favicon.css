@@ -1,7 +1,6 @@
 /*
 Colorbox Core Style
 ICO图标在线转换工具
-蝈蝈要安静（www.blog.quietguoguo.com）
 */
 html, body {margin: 0;padding: 0; }
 form{
@@ -86,3 +85,14 @@ form{
 	text-align:center;
 	color:#999
 }
+
+/* 覆盖加载失败图片 */
+img:after {
+	content: ' ';
+	display: block;
+	position: absolute;
+	top: 106px;
+	width: 20px;
+	height: 20px;
+	background: #fff;
+	}
