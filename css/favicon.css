@@ -1,0 +1,88 @@
+/*
+Colorbox Core Style
+ICO图标在线转换工具
+蝈蝈要安静（www.blog.quietguoguo.com）
+*/
+html, body {margin: 0;padding: 0; }
+form{
+	margin: 18px 0px;
+	height: 320px;
+}
+#favicon-area{
+	margin:16px auto 0;
+	font-family:'Microsoft Yahei','Sans-serif';
+	font-size:15px;
+	color: #868686;
+	width: 800px;
+	min-height: 240px;
+	border: 1px solid #aabbcc;
+	border-radius:3px;
+	padding: 0px 0px 8px;
+}
+#favicon-source{
+	height: 300px;
+	width: 50%;
+	float: left;
+}
+#preview{
+	float: left;
+	margin: 0px 12%;
+	padding:4%;
+	font-size: 24px;
+	color:#666666;
+	font-weight:bold;
+	text-align: center;
+	line-height:240px;   
+}
+#favicon-output{
+	height:300px;
+	width: 50%;
+    float: right;	
+}
+#favicon-notice{
+	float: right;
+	height:240px;
+	width: 240px;
+	margin: 0px 12%;
+	padding:4%;	 
+	text-indent: 0em;
+}
+#favicon-text{
+	margin:18px 0px;
+	float: none;
+}
+#favicon-area h1{
+	font-size:18px;
+	color: #888888;
+	font-weight:bold; 
+	text-align: center;
+	background-color: #EFEFEF;
+	border-bottom: 0px solid #12b4f0;
+	padding: 8px 12px;
+	border-left: 8px solid #24b4f0;
+	border-right: 8px solid #24b4f0;
+	margin:18px 0px;
+}
+#favicon-area h2{
+	font-size:16px;
+	color: #888888;
+	font-weight:bold; 
+	text-align: center;
+	background-color: #EFEFEF;
+	padding: 3px 5px;
+	margin: 9px;
+}
+#favicon-area p{
+	margin:5px;
+	font-size:14px;
+	text-indent: 2em;
+}
+
+#favicon-area-copyright{
+	margin:10px auto;
+	font-family:'Microsoft Yahei','Sans-serif';
+	font-size:12px;
+	width:820px;
+	text-align:center;
+	color:#999
+}
