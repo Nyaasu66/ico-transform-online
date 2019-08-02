@@ -7,6 +7,7 @@ include("./favicon.php");
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="./css/favicon.css" type="text/css" />
+	<link rel="icon" type="image/ico" href="https://blog.nyaasu.top/usr/imgs/favicon.ico" />
 	<title>ICO图标在线转换工具</title>
 	<script type="text/javascript">
 		function imgPreview(fileDom) {
