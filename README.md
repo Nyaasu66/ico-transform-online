@@ -1,5 +1,14 @@
-# ico-transform-online
-## favicon.ico 在线转换工具
+# favicon.ico 在线转换工具
+
+## 安装
+
+```bash
+$ sudo apt-get install php
+$ sudo apt-get install php-fpm
+$ mkdir /app/ico-tool
+$ cd /app/ico-tool
+$ git clone git@github.com:Nyaasu66/ico-transform-online.git
+```
 
 ## nginx配置 
 
