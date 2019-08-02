@@ -88,6 +88,7 @@ include("./favicon.php");
 				<p>ico是Iconfile的缩写，是Windows计算机中的一种图标文件格式，一般我们电脑桌面上显示的快捷方式就是这种格式的图标。一个ico文件实际上是多张不同尺寸图片的集合体，根据应用场景的不同自动选择合适的图片格式。</p>
 				<p>favicon是Favorites Icon的缩写，主要显示在浏览器地址栏左侧以提升网站品牌度。对于大多数主流浏览器，favicon不仅在地址栏中显示，还会同时出现在收藏夹中，用户可以通过拖曳favicon到桌面以建立网站的快捷方式。除此之外，标签式浏览器甚至还有不少扩展的功能，如FireFox甚至支持动画格式的favicon。</p>
 			</div>
+			<div>提示：操作之前，您可先使用此处<a href="http://yj.duduxuexi.com/">在线透明圆角工具</a>，生成透明圆角图片，然后再进行操作！</div>
 		</div>
 	</div>
 	<div id="favicon-area-copyright">
