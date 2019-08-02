@@ -36,12 +36,13 @@ include("./favicon.php");
 	</script>
 	<style>
 		img:after {
-			content: ' ';
-			display: block;
-			position: absolute;
-			width: 20px;
-			height: 20px;
-			background: #eee;
+		content: ' ';
+    display: block;
+    position: absolute;
+    top: 106px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
 		}
 	</style>
 </head>
