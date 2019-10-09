@@ -2,7 +2,7 @@
 
 ## 演示地址
 
-![ico.nyaasu.top](https://ico.nyaasu.top)
+[ico.nyaasu.top](https://ico.nyaasu.top)
 
 ## 安装
 
