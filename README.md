@@ -25,7 +25,7 @@ $ git clone git@github.com:Nyaasu66/ico-transform-online.git
 server{
         listen 80;
         server_name [ico.nyaasu.top];
-        root [/xxx/ico-transform-online;
+        root [/xxx/ico-transform-online];
         index index.php;
         location / {
                 try_files $uri $uri/ /index.php$is_args$args;
