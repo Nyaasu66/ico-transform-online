@@ -8,7 +8,7 @@ include("./favicon.php");
 	<meta charset="utf-8">
 	<meta name="description" content="在线将 jpg png 格式图片转换为 ico 格式图标的开源工具，支持透明背景" />
 	<meta name="keywords" content="ico 转换 favicon 开源 免费 png jpg 工具 在线" />
-	<link rel="stylesheet" href="./css/favicon.css" type="text/css" />
+	<link rel="stylesheet" href="./favicon.css" type="text/css" />
 	<link rel="icon" type="image/ico" href="https://blog.nyaasu.top/usr/imgs/favicon.ico" />
 	<title>ICO图标在线转换工具</title>
 	<script type="text/javascript">
