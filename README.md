@@ -1,5 +1,7 @@
 # favicon.ico 在线转换工具
 
+在线将 jpg png 格式图片转换为 ico 格式图标的开源工具，支持透明背景
+
 ## 演示地址
 
 [ico.nyaasu.top](https://ico.nyaasu.top)
@@ -7,21 +9,21 @@
 ## 安装
 
 ```bash
-$ sudo apt-get install php
-$ sudo apt-get install php-fpm
-$ mkdir /app/ico-tool
-$ cd /app/ico-tool
-$ git clone git@github.com:Nyaasu66/ico-transform-online.git
+# 这里安装的 php 版本是 7.2
+sudo apt-get install php
+sudo apt-get install php-fpm
+mkdir /app/ico-tool
+cd /app/ico-tool
+git clone git@github.com:Nyaasu66/ico-transform-online.git
 ```
 
-## nginx配置 
+## nginx配置
 
 ### 非https
 
 - 方括号里的内容填你自己的参数
 
-```  
-
+```nginx
 server{
         listen 80;
         server_name [ico.nyaasu.top];
@@ -37,13 +39,11 @@ server{
                 fastcgi_pass unix:/run/php/php7.0-fpm.sock;
         }
 }
-
 ```
 
 ### https
 
-```
-
+```nginx
 server{
 	listen 80;
 	server_name [ico.nyaasu.top];
@@ -83,7 +83,4 @@ server {
 	}
 
 }
-
-
-
 ```
