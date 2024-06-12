@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>在线对图片进行透明圆角处理 - 在线生成透明圆角图片、图标工具</title>
+
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="bookmark" href="./favicon.ico" />
+    <meta
+      name="Keywords"
+      content="在线工具,在线图片工具，图片圆角，图片圆角处理,图标圆角处理,圆角图标,透明圆角图标,透明圆角生成"
+    />
+    <meta
+      name="Description"
+      content="在线工具，本工具可以轻松的对图片进行透明圆角处理，生成圆角图片，并且可以指定图片圆角的大小，另外，图片大小完全不受限制。"
+    />
+    <script type="text/javascript" src="./Blob.js"></script>
+    <script type="text/javascript" src="./canvas-toBlob.js"></script>
+    <script type="text/javascript" src="./FileSaver.js"></script>
+    <script type="text/javascript" src="./libcanvas.js"></script>
+  </head>
+
+  <body>
+    <style type="text/css"></style>
+
+    <div style="width: 960px; margin: 0 auto">
+      <br />
+
+      <h1 style="margin-left: 240px">
+        <img
+          src="./yj.png"
+          style="
+            max-width: 6%;
+            max-height: 6%;
+            margin: auto;
+            vertical-align: bottom;
+            margin-right: 10px;
+          "
+        />在线对图片进行透明圆角处理
+      </h1>
+
+      <form enctype="multipart/form-data" class="ns">
+        <p>
+          <b><span class="form_label" style="width: 100px">上传图片：</span></b>
+          <input
+            style="width: 200px"
+            type="file"
+            id="upimage"
+            accept="image/gif,image/png,image/jpg,image/bmp,image/jpeg"
+            size="30"
+            onchange="on_upload_img();"
+          />
+          <b><span class="form_label" style="width: 80px">圆角尺寸：</span></b>
+          <input style="width: 60px" type="text" id="radius" value="50" />
+          <input
+            type="button"
+            class="form_button"
+            style="margin-left: 50px; width: 140px"
+            onclick="on_upload_img();"
+            id="round_corner_btn"
+            value="转换成圆角图片"
+          />
+          <button
+            type="button"
+            style="margin-left: 30px; width: 100px"
+            class="button success small"
+            onclick="download_img();"
+          >
+            下载圆角图片
+          </button>
+          <!--
+						<a type="button" class="form_button" style="margin-left: 30px; width:100px;" onclick="download_img();" id="download_btn" >下载圆角图片</a>
+						-->
+        </p>
+        <hr />
+        <p>
+          <!--
+						<div id="prev" style="width:800px;margin-left:50px;display:block;zoom:1;height: 500px;border: solid 1px #ccc;"></div>
+						-->
+        </p>
+        <div id="prev" style="display: none"></div>
+        <div
+          class="alert success"
+          style="
+            width: 800px;
+            margin-left: 50px;
+            display: block;
+            zoom: 1;
+            height: 500px;
+            border: solid 1px #ccc;
+            text-align: center;
+          "
+        >
+          <i
+            style="display: inline-block; height: 100%; vertical-align: middle"
+          ></i
+          ><img
+            src="./yjtp.png"
+            id="result_img"
+            style="
+              max-width: 100%;
+              max-height: 100%;
+              margin: auto;
+              vertical-align: middle;
+            "
+          />
+        </div>
+
+        <p></p>
+      </form>
+
+      <script type="text/javascript">
+        var canvas;
+        var img;
+        // var image_content = '';
+        var readImage = function (file, callback) {
+          var reader = new FileReader();
+          reader.addEventListener(
+            "loadend",
+            function (e) {
+              if (e.target.readyState == FileReader.DONE) {
+                var img = new Image();
+                img.src = e.target.result;
+                img.onload = function () {
+                  callback(img);
+                };
+              }
+            },
+            false
+          );
+
+          reader.readAsDataURL(file);
+        };
+        function $_(id) {
+          return document.getElementById(id);
+        }
+        function download_img() {
+          var canvas = $_("roundCanvas");
+          var ctx = canvas.getContext("2d");
+          canvas.toBlob(function (blob) {
+            saveAs(blob, `yjtp.png`);
+          }, "image/png");
+          return false;
+        }
+        function do_round_img() {
+          if (img && canvas) {
+            if (!$_("radius")) {
+              $_("radius").value = "0";
+            }
+            libcanvas.pasteImg(canvas, img);
+            libcanvas.roundCanvas(canvas, $_("radius").value);
+
+            $_("result_img").src = canvas.toDataURL();
+          }
+        }
+
+        function on_upload_img() {
+          var file = $_("upimage").files[0];
+
+          var tempStr = "image/gifimage/pngimage/jpgimage/bmpimage/jpeg";
+          var bool = tempStr.indexOf(file.type);
+
+          if (bool < 0) {
+            alert("请确保文件为支持的图像类型！");
+            return false;
+          }
+
+          zzzh();
+
+          readImage(file, function (upimg) {
+            img = upimg;
+            canvas = libcanvas.createCanvasBasedOnImg(img);
+            canvas.id = "roundCanvas";
+            if ($_("prev").childNodes.length != 0) {
+              $_("prev").removeChild($_("prev").childNodes[0]);
+            }
+            $_("prev").appendChild(canvas);
+            do_round_img();
+          });
+        }
+
+        function zzzh() {
+          $_("result_img").src = "./zzzh.png";
+        }
+
+        window.onload = function () {
+          if (typeof FileReader === "undefined") {
+            alert("抱歉，你的浏览器不支持 FileReader，请使用现代浏览器操作！");
+            $_("upimage").disabled = true;
+          }
+        };
+      </script>
+
+      <hr />
+      <b>说明：</b>支持
+      PNG、GIF、JPG、BMP等格式。生成圆角为透明，输出图片格式为PNG！
+      此外，本在线功能无法在IE浏览器中使用（无法下载图片），可以使用谷歌、火狐、360、苹果等浏览器（如上传图片体积较大，圆角过程会较长，约需要几秒）。
+
+      <br />
+      <br />
+
+      <div style="color: #999; font-size: 11px; text-align: center">
+        本站点是 https://www.pcccp.cn/yj/ 的镜像，版权归原作者所有
+      </div>
+    </div>
+    <script type="text/javascript" charset="gb2312">
+      function $xy(id) {
+        return document.getElementById(id);
+      }
+      function xydlss() {
+        $xy("xydllc").style.height = "0px";
+        $xy("xydlrc").style.height = "0px";
+        $xy("xyss1").style.display = "none";
+        $xy("xysb1").style.display = "block";
+        $xy("xyss2").style.display = "none";
+        $xy("xysb2").style.display = "block";
+      }
+      function xydlsb() {
+        $xy("xydllc").style.height = "401px";
+        $xy("xydlrc").style.height = "401px";
+        $xy("xysb1").style.display = "none";
+        $xy("xyss1").style.display = "block";
+        $xy("xysb2").style.display = "none";
+        $xy("xyss2").style.display = "block";
+      }
+      function xycolse() {
+        $xy("xydlright").style.display = "none";
+        $xy("xydlleft").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
