@@ -6,6 +6,8 @@ include("./favicon.php");
 
 <head>
 	<meta charset="utf-8">
+	<meta name="description" content="在线将 jpg png 格式图片转换为 ico 格式图标的开源工具，支持透明背景" />
+	<meta name="keywords" content="ico 转换 favicon 开源 免费 png jpg 工具 在线" />
 	<link rel="stylesheet" href="./css/favicon.css" type="text/css" />
 	<link rel="icon" type="image/ico" href="https://blog.nyaasu.top/usr/imgs/favicon.ico" />
 	<title>ICO图标在线转换工具</title>
@@ -39,9 +41,7 @@ include("./favicon.php");
 
 <body>
 	<div id="favicon-area">
-		<a style="display: block; text-indent: 0em;" href="http://blog.quietguoguo.com/">
-		</a>
-		<h1>ICO图标在线转换</h1>
+		<h1>ICO 图标在线转换</h1>
 		<form method="post" enctype='multipart/form-data'>
 			<div id="favicon-source">
 				<img id="preview" height="240px" width="240px" alt="上传源图片">
@@ -62,7 +62,7 @@ include("./favicon.php");
 						<input type="radio" name="size" value="6" id="s6"><label for="s6">256*256</label>
 					</div>
 					<h2>需要注意</h2>
-					<p>图片应小于512KB且为JPG、GIF或PNG格式，建议长宽比1:1。</p>
+					<p>图片应小于 1 MB 且为 JPG, GIF, PNG 格式，建议长宽比1:1</p>
 					<p style="color:red;"><?php if ($typeinfo != "") {
 																	echo $typeinfo;
 																} ?></p>
@@ -74,14 +74,19 @@ include("./favicon.php");
 		<div id="favicon-text">
 			<h1>Ico？Favicon？</h1>
 			<div style="margin:0px 12px;">
-				<p>ico是Iconfile的缩写，是Windows计算机中的一种图标文件格式，一般我们电脑桌面上显示的快捷方式就是这种格式的图标。一个ico文件实际上是多张不同尺寸图片的集合体，根据应用场景的不同自动选择合适的图片格式。</p>
-				<p>favicon是Favorites Icon的缩写，主要显示在浏览器地址栏左侧以提升网站品牌度。对于大多数主流浏览器，favicon不仅在地址栏中显示，还会同时出现在收藏夹中，用户可以通过拖曳favicon到桌面以建立网站的快捷方式。除此之外，标签式浏览器甚至还有不少扩展的功能，如FireFox甚至支持动画格式的favicon。</p>
+				<p>ico 是 Iconfile 的缩写，是 Windows 计算机中的一种图标文件格式，一般我们电脑桌面上显示的快捷方式就是这种格式的图标。一个 ico 文件实际上是多张不同尺寸图片的集合体，根据应用场景的不同自动选择合适的图片格式。</p>
+				<p>favicon 是 Favorites Icon 的缩写，主要显示在浏览器地址栏左侧以提升网站品牌度。对于大多数主流浏览器，favicon 不仅在地址栏中显示，还会同时出现在收藏夹中，用户可以通过拖曳 favicon 到桌面以建立网站的快捷方式。除此之外，标签式浏览器甚至还有不少扩展的功能，如 FireFox 甚至支持动画格式的 favicon。</p>
 			</div>
-			<div><p>提示：操作之前，您可先使用此处<a href="http://yj.duduxuexi.com/">在线透明圆角工具</a>，生成透明圆角图片，然后再进行操作！</p></div>
+			<div>
+				<p>提示：操作之前，您可先使用 <a href="https://ico.nyaasu.top/transp">在线透明圆角工具</a>，生成透明圆角图片，然后再进行操作！</p>
+			</div>
+			<div>
+				<p>24.06.12 更新：目前已支持透明背景，源码在底部链接，有条件的可以按照说明自行部署。</p>
+			</div>
 		</div>
 	</div>
 	<div id="favicon-area-copyright">
-		&copy;2019 | <a href="https://blog.nyaasu.top">Nyaasu</a>
+		2019-2024 | <a href="https://blog.nyaasu.top">Nyaasu</a> | <a href="https://github.com/Nyaasu66/ico-transform-online">Github</a>
 	</div>
 
 </body>
