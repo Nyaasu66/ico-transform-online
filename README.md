@@ -9,7 +9,7 @@
 ## 安装
 
 ```bash
-sudo apt install php php-fpm nginx
+sudo apt install php php-fpm php-gd nginx
 git clone git@github.com:Nyaasu66/ico-transform-online.git
 ```
 
