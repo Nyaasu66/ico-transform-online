@@ -9,6 +9,7 @@
 ## 安装
 
 ```bash
+# 环境为 ubuntu-server
 sudo apt install php php-fpm php-gd nginx
 git clone git@github.com:Nyaasu66/ico-transform-online.git
 ```
@@ -80,6 +81,9 @@ server {
 }
 ```
 
+任选一种方案，保存到 `/etc/nginx/conf.d/ico.conf`，然后 `sudo nginx -s reload`，无任何返回则代表 nginx 已正常启动
+
 ### 其他配置
 
 - 你可能需要将 `/etc/nginx/nginx.conf` 的 user 由 `nginx` 改为 `www-data`, 否则会出现 502 Bat Gateway 错误.
+- 如果有其他错误，可通过 `sudo vi -R /var/log/nginx/error.log` 查看 nginx 日志

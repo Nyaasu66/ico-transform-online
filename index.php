@@ -6,7 +6,7 @@ include("./favicon.php");
 
 <head>
 	<meta charset="utf-8">
-	<meta name="description" content="在线将 jpg png 格式图片转换为 ico 格式图标的开源工具，支持透明背景" />
+	<meta name="description" content="在线将jpg,png,gif格式图片转换为ico格式图标的开源工具，适合网页favicon，支持透明背景，自带圆角剪裁功能" />
 	<meta name="keywords" content="ico 转换 favicon 开源 免费 png jpg 工具 在线" />
 	<link rel="stylesheet" href="./index.css" type="text/css" />
 	<link rel="icon" type="image/ico" href="https://blog.nyaasu.top/usr/imgs/favicon.ico" />
