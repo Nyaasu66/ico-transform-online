@@ -8,6 +8,19 @@ include("./favicon.php");
 	<meta charset="utf-8">
 	<meta name="description" id="meta-desc" content="在线将jpg,png图片转为ico图标，免费开源，适合网站favicon，支持透明背景，自带圆角剪裁功能" />
 	<meta name="keywords" content="ico 格式转换 favicon 在线工具 免费开源 png jpg png转ico jpg转ico 透明 github" />
+	<!-- Open Graph -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://ico.nyaasu.top" />
+	<meta property="og:title" content="ICO图标在线转换工具" />
+	<meta property="og:description" content="在线将 JPG、PNG 图片转为 ICO 图标，免费开源，支持透明背景与圆角裁剪，适合网站 favicon 制作。" />
+	<meta property="og:image" content="https://blog.nyaasu.top/usr/imgs/favicon.ico" />
+	<meta property="og:locale" content="zh_CN" />
+	<meta property="og:locale:alternate" content="en_US" />
+	<!-- Twitter Card (Telegram fallback) -->
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="ICO图标在线转换工具" />
+	<meta name="twitter:description" content="在线将 JPG、PNG 图片转为 ICO 图标，免费开源，支持透明背景与圆角裁剪，适合网站 favicon 制作。" />
+	<meta name="twitter:image" content="https://blog.nyaasu.top/usr/imgs/favicon.ico" />
 	<link rel="stylesheet" href="./index.css" type="text/css" />
 	<link rel="icon" type="image/ico" href="https://blog.nyaasu.top/usr/imgs/favicon.ico" />
 	<title id="page-title">ICO图标在线转换工具</title>
