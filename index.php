@@ -21,7 +21,7 @@ include("./favicon.php");
 	<meta name="twitter:title" content="ICO图标在线转换工具" />
 	<meta name="twitter:description" content="在线将 JPG、PNG 图片转为 ICO 图标，免费开源，支持透明背景与圆角裁剪，适合网站 favicon 制作。" />
 	<meta name="twitter:image" content="https://blog.nyaasu.top/usr/imgs/favicon.ico" />
-	<link rel="stylesheet" href="./index.css" type="text/css" />
+	<link rel="stylesheet" href="./index.css?v=<?= filemtime(__DIR__ . '/index.css') ?>" type="text/css" />
 	<link rel="icon" type="image/ico" href="https://blog.nyaasu.top/usr/imgs/favicon.ico" />
 	<title id="page-title">ICO图标在线转换工具</title>
 	<script type="text/javascript">
