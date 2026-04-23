@@ -21,7 +21,7 @@ git clone git@github.com:Nyaasu66/ico-transform-online.git
 - 方括号里的内容填你自己的参数
 
 ```nginx
-limit_req_zone $binary_remote_addr zone=ico_upload:10m rate=10r/m;
+limit_req_zone $binary_remote_addr zone=ico_upload:10m rate=30r/m;
 
 server {
   listen 80;
@@ -49,7 +49,7 @@ server {
   }
 
   location ~ \.php$ {
-    limit_req zone=ico_upload burst=5 nodelay;
+    limit_req zone=ico_upload burst=10 nodelay;
     include fastcgi.conf;
     fastcgi_pass unix:/run/php/php-fpm.sock;
   }
@@ -59,8 +59,8 @@ server {
 ### https
 
 ```nginx
-# 上传速率限制：同一 IP 每分钟最多 10 次请求
-limit_req_zone $binary_remote_addr zone=ico_upload:10m rate=10r/m;
+# 上传速率限制：同一 IP 每分钟最多 30 次请求
+limit_req_zone $binary_remote_addr zone=ico_upload:10m rate=30r/m;
 
 server {
   listen 80;
@@ -107,7 +107,7 @@ server {
 
   location ~ \.php$ {
     try_files $fastcgi_script_name =404;
-    limit_req zone=ico_upload burst=5 nodelay;
+    limit_req zone=ico_upload burst=10 nodelay;
     include fastcgi.conf;
     fastcgi_pass unix:/run/php/php7.2-fpm.sock;
   }

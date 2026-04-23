@@ -95,12 +95,15 @@ include("./favicon.php");
 
 			var btnZh = document.getElementById('btn-zh');
 			var btnEn = document.getElementById('btn-en');
+			var placeholder = document.getElementById('preview-placeholder');
 			if (lang === 'zh') {
 				btnZh.classList.add('active');
 				btnEn.classList.remove('active');
+				placeholder.classList.remove('english');
 			} else {
 				btnEn.classList.add('active');
 				btnZh.classList.remove('active');
+				placeholder.classList.add('english');
 			}
 		}
 
