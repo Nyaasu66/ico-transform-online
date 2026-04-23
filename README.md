@@ -45,6 +45,13 @@ server {
     try_files $uri $uri/ /index.php$is_args$args;
   }
 
+  # 禁止访问所有隐藏文件和隐藏目录（如 .git、.env、.htaccess 等）
+  location ~ /\. {
+    deny all;
+    access_log off;
+    log_not_found off;
+  }
+
   location ~ \.php$ {
     limit_req zone=ico_upload burst=5 nodelay;
     include fastcgi.conf;
@@ -104,6 +111,13 @@ server {
 
   location / {
     try_files $uri $uri/ /index.php$is_args$args;
+  }
+
+  # 禁止访问所有隐藏文件和隐藏目录（如 .git、.env、.htaccess 等）
+  location ~ /\. {
+    deny all;
+    access_log off;
+    log_not_found off;
   }
 
   location ~ \.php$ {
