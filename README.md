@@ -21,22 +21,19 @@ git clone git@github.com:Nyaasu66/ico-transform-online.git
 - 方括号里的内容填你自己的参数
 
 ```nginx
-# 上传速率限制：同一 IP 每分钟最多 10 次请求
 limit_req_zone $binary_remote_addr zone=ico_upload:10m rate=10r/m;
 
 server {
   listen 80;
   server_name [ico.nyaasu.top];
-  root [/xxx/ico-transform-online];
+  root [/ico-transform-online];
   index index.php;
 
-  # 限制上传体积，与 PHP 保持一致
   client_max_body_size 2m;
   client_body_timeout  10s;
   client_header_timeout 10s;
   send_timeout         10s;
 
-  # 安全响应头
   add_header X-Content-Type-Options "nosniff" always;
   add_header X-Frame-Options "SAMEORIGIN" always;
   add_header Referrer-Policy "strict-origin-when-cross-origin" always;
@@ -45,7 +42,6 @@ server {
     try_files $uri $uri/ /index.php$is_args$args;
   }
 
-  # 禁止访问所有隐藏文件和隐藏目录（如 .git、.env、.htaccess 等）
   location ~ /\. {
     deny all;
     access_log off;
@@ -55,7 +51,6 @@ server {
   location ~ \.php$ {
     limit_req zone=ico_upload burst=5 nodelay;
     include fastcgi.conf;
-    include fastcgi_params;
     fastcgi_pass unix:/run/php/php-fpm.sock;
   }
 }
@@ -76,44 +71,34 @@ server {
 server {
   listen 443 ssl;
   server_name [ico.nyaasu.top];
-  ssl_certificate      [xxx/fullchain.pem];
-  ssl_certificate_key  [xxx/privkey.pem];
-
-  # 仅启用安全协议，禁用已废弃的 TLSv1.0 / TLSv1.1
-  ssl_protocols TLSv1.2 TLSv1.3;
-
-  # 仅保留支持前向安全的现代密码套件，移除 3DES 等弱算法
+  ssl_certificate      [/cert.pem];
+  ssl_certificate_key  [/key.pem];
+  ssl_protocols        TLSv1.2 TLSv1.3;
   ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305';
   ssl_prefer_server_ciphers on;
+  ssl_session_cache          shared:SSL_ICO:10m;
+  ssl_session_timeout        1d;
+  ssl_session_tickets        off;
+  ssl_stapling               off;
 
-  ssl_session_cache   shared:SSL:10m;
-  ssl_session_timeout 1d;
-  ssl_session_tickets off;
-  ssl_stapling        on;
-  ssl_stapling_verify on;
-  ssl_trusted_certificate [xxx/fullchain.pem];
-
-  # 限制上传体积，与 PHP 保持一致
   client_max_body_size 2m;
   client_body_timeout  10s;
   client_header_timeout 10s;
   send_timeout         10s;
 
-  # 安全响应头
-  # HSTS：强制 HTTPS 一年，防止 SSL 剥离攻击
   add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
   add_header X-Content-Type-Options "nosniff" always;
   add_header X-Frame-Options "SAMEORIGIN" always;
   add_header Referrer-Policy "strict-origin-when-cross-origin" always;
 
-  root [xxx/ico-transform-online];
+  root [/ico-transform-online];
   index index.php;
 
   location / {
     try_files $uri $uri/ /index.php$is_args$args;
   }
 
-  # 禁止访问所有隐藏文件和隐藏目录（如 .git、.env、.htaccess 等）
+  # 禁止访问所有隐藏文件和隐藏目录（如 .git）
   location ~ /\. {
     deny all;
     access_log off;
@@ -121,10 +106,10 @@ server {
   }
 
   location ~ \.php$ {
+    try_files $fastcgi_script_name =404;
     limit_req zone=ico_upload burst=5 nodelay;
     include fastcgi.conf;
-    include fastcgi_params;
-    fastcgi_pass unix:/run/php/php-fpm.sock;
+    fastcgi_pass unix:/run/php/php7.2-fpm.sock;
   }
 }
 ```

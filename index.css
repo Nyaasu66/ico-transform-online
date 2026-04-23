@@ -13,6 +13,44 @@ form{
 	border: 1px solid #aabbcc;
 	border-radius:3px;
 	padding: 0px 0px 8px;
+	position: relative;
+}
+
+#lang-switcher {
+	position: absolute;
+	top: 8px;
+	right: 12px;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	z-index: 10;
+}
+
+#lang-switcher button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-family: 'Microsoft Yahei', 'Sans-serif';
+	font-size: 13px;
+	color: #aabbcc;
+	padding: 2px 4px;
+	border-radius: 2px;
+	transition: color 0.2s;
+}
+
+#lang-switcher button:hover {
+	color: #24b4f0;
+}
+
+#lang-switcher button.active {
+	color: #24b4f0;
+	font-weight: bold;
+}
+
+#lang-switcher .lang-sep {
+	color: #cccccc;
+	font-size: 12px;
+	user-select: none;
 }
 #favicon-source{
 	height: 300px;

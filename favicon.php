@@ -1,6 +1,28 @@
 <?php
 $typeinfo = "";
 
+$lang = (isset($_POST['lang']) && $_POST['lang'] === 'en') ? 'en' : 'zh';
+
+$msgs = [
+    'zh' => [
+        'type_error'    => '图片格式错误！目前仅支持jpg，gif，png格式的图片。',
+        'size_error'    => '图片尺寸超出限制！请确保图片大小在1MB以内。',
+        'invalid_image' => '格式转换失败！请检测源文件无误后重试。',
+        'pixel_large'   => '图片像素尺寸过大！请使用4096×4096以内的图片。',
+        'gen_fail'      => '生成ICO图标失败！请重试。',
+        'no_file'       => '图片未上传！请选择要转换为ICO图标的文件！',
+    ],
+    'en' => [
+        'type_error'    => 'Invalid image format! Only JPG, GIF, and PNG are supported.',
+        'size_error'    => 'Image size exceeds limit! Please ensure the image is under 1 MB.',
+        'invalid_image' => 'Conversion failed! Please check the source file and try again.',
+        'pixel_large'   => 'Image dimensions too large! Please use an image within 4096×4096 pixels.',
+        'gen_fail'      => 'Failed to generate ICO icon! Please try again.',
+        'no_file'       => 'No image uploaded! Please select a file to convert to ICO.',
+    ],
+];
+$m = $msgs[$lang];
+
 if (!empty($_FILES['upimage']['tmp_name']) && is_uploaded_file($_FILES['upimage']['tmp_name'])) {
     // 用 finfo 检测真实文件内容类型，避免被 HTTP Content-Type 欺骗
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
@@ -9,16 +31,16 @@ if (!empty($_FILES['upimage']['tmp_name']) && is_uploaded_file($_FILES['upimage'
 
     $allowed_mime = array("image/jpeg", "image/png", "image/gif");
     if (!in_array($real_mime, $allowed_mime)) {
-        $typeinfo = "图片格式错误！目前仅支持jpg，gif，png格式的图片。";
+        $typeinfo = $m['type_error'];
     } elseif ($_FILES['upimage']['size'] > 1024000) {
-        $typeinfo = "图片尺寸超出限制！请确保图片大小在1MB以内。";
+        $typeinfo = $m['size_error'];
     } else {
         $imginfo = @getimagesize($_FILES['upimage']['tmp_name']);
         if (!is_array($imginfo)) {
-            $typeinfo = "格式转换失败！请检测源文件无误后重试。";
+            $typeinfo = $m['invalid_image'];
         } elseif ($imginfo[0] > 4096 || $imginfo[1] > 4096) {
             // 防止图像炸弹：限制解码后的像素尺寸，避免内存耗尽
-            $typeinfo = "图片像素尺寸过大！请使用4096×4096以内的图片。";
+            $typeinfo = $m['pixel_large'];
         } else {
             $im = false;
             if ($real_mime === "image/png") {
@@ -30,7 +52,7 @@ if (!empty($_FILES['upimage']['tmp_name']) && is_uploaded_file($_FILES['upimage'
             }
 
             if ($im === false) {
-                $typeinfo = "生成ICO图标失败！请重试。";
+                $typeinfo = $m['gen_fail'];
             } else {
                 switch ((int)$_POST['size']) {
                     case 1:  $size = 16;  break;
@@ -171,6 +193,6 @@ if (!empty($_FILES['upimage']['tmp_name']) && is_uploaded_file($_FILES['upimage'
         }
     }
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $typeinfo = "图片未上传！请选择要转换为ICO图标的文件！";
+    $typeinfo = $m['no_file'];
 }
 ?>
