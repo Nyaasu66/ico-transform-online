@@ -81,6 +81,7 @@ include("./favicon.php");
 			document.getElementById('meta-desc').setAttribute('content', t.metaDesc);
 			document.getElementById('main-title').textContent = t.mainTitle;
 			document.getElementById('preview').setAttribute('alt', t.uploadAlt);
+			document.getElementById('preview-placeholder').textContent = t.uploadAlt;
 			document.getElementById('size-label').textContent = t.sizeLabel;
 			document.getElementById('notice-title').textContent = t.noticeTitle;
 			document.getElementById('notice-p1').textContent = t.noticeP1;
@@ -121,10 +122,12 @@ include("./favicon.php");
 				alert(I18N[currentLang].alertNotImage);
 				return;
 			}
-			reader.onload = function(e) {
-				var img = document.getElementById("preview");
-				img.src = e.target.result;
-			};
+		reader.onload = function(e) {
+			var img = document.getElementById("preview");
+			img.src = e.target.result;
+			img.style.display = '';
+			document.getElementById("preview-placeholder").style.display = 'none';
+		};
 			reader.readAsDataURL(file);
 		}
 
@@ -147,19 +150,19 @@ include("./favicon.php");
 </head>
 
 <body>
+	<div id="lang-switcher">
+		<button id="btn-zh" onclick="setLang('zh')">中</button>
+		<button id="btn-en" onclick="setLang('en')">EN</button>
+	</div>
 	<div id="favicon-area">
-		<div id="lang-switcher">
-			<button id="btn-zh" onclick="setLang('zh')">中文</button>
-			<span class="lang-sep">|</span>
-			<button id="btn-en" onclick="setLang('en')">EN</button>
-		</div>
 		<h1 id="main-title">ICO 图标在线转换</h1>
 		<form method="post" enctype='multipart/form-data'>
 			<input type="hidden" name="lang" id="lang-input" value="zh">
 			<div id="favicon-source">
-				<img id="preview" height="240px" width="240px" alt="上传源图片">
-				</br></br>
-				<input type="file" name="upimage" onchange="imgPreview(this)" style="margin:0 28%;">
+			<div id="preview-placeholder"></div>
+			<img id="preview" height="240px" width="240px" style="display:none;">
+			</br></br>
+			<input type="file" name="upimage" onchange="imgPreview(this)" style="margin:0 28%;">
 			</div>
 
 			<div id="favicon-output">

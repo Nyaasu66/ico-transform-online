@@ -13,29 +13,33 @@ form{
 	border: 1px solid #aabbcc;
 	border-radius:3px;
 	padding: 0px 0px 8px;
-	position: relative;
 }
 
 #lang-switcher {
-	position: absolute;
-	top: 8px;
-	right: 12px;
+	position: fixed;
+	top: 16px;
+	right: 20px;
 	display: flex;
 	align-items: center;
-	gap: 4px;
-	z-index: 10;
+	background: #f0f5f9;
+	border: 1px solid #c8d8e8;
+	border-radius: 20px;
+	padding: 3px;
+	gap: 2px;
+	z-index: 100;
 }
 
 #lang-switcher button {
-	background: none;
+	background: transparent;
 	border: none;
 	cursor: pointer;
 	font-family: 'Microsoft Yahei', 'Sans-serif';
-	font-size: 13px;
+	font-size: 12px;
 	color: #aabbcc;
-	padding: 2px 4px;
-	border-radius: 2px;
-	transition: color 0.2s;
+	padding: 3px 10px;
+	border-radius: 16px;
+	line-height: 1.4;
+	transition: background 0.2s, color 0.2s;
 }
 
 #lang-switcher button:hover {
@@ -43,14 +47,9 @@ form{
 }
 
 #lang-switcher button.active {
-	color: #24b4f0;
-	font-weight: bold;
-}
-
-#lang-switcher .lang-sep {
-	color: #cccccc;
-	font-size: 12px;
-	user-select: none;
+	background: #24b4f0;
+	color: #fff;
+	font-weight: 500;
 }
 #favicon-source{
 	height: 300px;
@@ -61,11 +60,21 @@ form{
 	float: left;
 	margin: 0px 12%;
 	padding:4%;
+}
+#preview-placeholder{
+	user-select: none;
+	float: left;
+	margin: 0px 12%;
+	padding:4%;
+	padding-left: 15%;
+	width: 240px;
+	height: 240px;
 	font-size: 24px;
 	color:#666666;
 	font-weight:bold;
 	text-align: center;
-	line-height:240px;   
+	line-height:240px;
+	box-sizing: border-box;
 }
 #favicon-output{
 	height:300px;
