@@ -76,6 +76,11 @@ form{
 	line-height:240px;
 	box-sizing: border-box;
 }
+#preview-placeholder.english {
+	padding-left: 0;
+	font-size: 20px;
+	width: 300px;
+}
 #favicon-output{
 	height:300px;
 	width: 50%;
