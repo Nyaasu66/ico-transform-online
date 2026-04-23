@@ -86,7 +86,7 @@ include("./favicon.php");
 		</div>
 	</div>
 	<div id="favicon-area-copyright">
-		2019-2024 | <a href="https://blog.nyaasu.top">Nyaasu</a> | <a href="https://github.com/Nyaasu66/ico-transform-online">Github</a>
+		2019-2026 | <a href="https://blog.nyaasu.top">Nyaasu</a> | <a href="https://github.com/Nyaasu66/ico-transform-online">Github</a>
 	</div>
 
 </body>
